@@ -765,15 +765,16 @@
                 padding: 6px 10px;
             }
 
-            /* 解決首頁大圖比例問題 */
+            /* 解決首頁大圖比例問題 - 改為等比例防裁切模式 */
             .hero {
-                height: 60vh;
-                min-height: 500px;
-                max-height: 650px;
+                height: calc(100vw * 9 / 16 + 60px); 
+                min-height: auto;
+                max-height: none;
             }
             .hero-bg {
-                background-size: cover;
-                background-position: center;
+                background-size: contain;
+                background-position: center 60px;
+                background-repeat: no-repeat;
             }
             .scroll-down {
                 display: flex;
