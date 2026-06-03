@@ -845,6 +845,23 @@
                 font-size: 2rem; 
                 margin-bottom: 40px; 
             }
+            
+            /* 修改 2：將名字標題調整為與 section-title 大小一致 */
+            .about-text h2 {
+                font-size: 2rem; 
+            }
+
+            /* 修改 3：防止圖片底部被裁切，取消固定高度並保留原始比例 */
+            .about-img {
+                width: 100%;
+                height: auto; 
+            }
+            .about-img img {
+                height: auto; 
+                display: block; 
+                object-fit: contain; 
+            }
+
             /* 手機版首頁封面完整顯示 */
             .hero{
                 height: calc(100vw * 9 / 16 + 80px);
@@ -1023,10 +1040,10 @@
                     <img src="./Media/MY.jpg" alt="羅翊瑄">
                 </div>
                 <div class="about-text">
-                    <h2>羅翊瑄</h2>
-                    <p>具備<strong>細心嚴謹</strong>的工作態度，追求高完成度與整體品質。擁有敏銳的美感判斷力，善於透過反覆雕琢細節，確保作品的視覺一致性與高水準呈現。熟練運用 Photoshop、Illustrator 等設計軟體，能靈活應對多元專案情境與需求。</p>
-                    <p>面對未知挑戰與新工具，具備<strong>高效的學習意願與吸收力</strong>，善於在實作中滾動式修正與自我精進。在團隊協作中富有<strong>高度責任感</strong>，能主動配合團隊節奏，全力確保每一項交付成果皆達到最佳品質。</p>
-                </div>
+    <h2>羅翊瑄</h2>
+    <p>在設計實務上，我秉持<strong>細心嚴謹</strong>的工作態度，追求作品的完成度與整體品質。我具備<strong>敏銳的美感判斷力</strong>，習慣透過反覆雕琢細節，確保視覺的一致性與<strong>高水準呈現</strong>。此外，我熟練運用 Photoshop、Illustrator 等軟體，能<strong>靈活應對多元專案</strong>的需求。</p>
+    <p>面對新工具與挑戰，我保持<strong>高度的學習熱忱與吸收力</strong>，並樂於在實作中不斷<strong>自我精進</strong>。參與團隊協作時，我擁有<strong>高度責任感</strong>，能主動配合團隊節奏，與夥伴共同將交付成果做到最好。</p>
+</div>
             </div>
         </div>
     </section>
@@ -1193,28 +1210,28 @@
                     <div class="timeline-content">
                         <div class="timeline-date">2026</div>
                         <h3>2026 C-IDEA</h3>
-                        <p>專題2D動畫《魚逾人》</p><p>影視動畫設計組-初評入選</p>
+                        <p>專題2D動畫《魚逾人》</p><p>Film&Animation Design - 初評入選</p>
                     </div>
                 </div>  
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2024</div>
                         <h3>第33屆時報金犢獎國際競賽</h3>
-                        <p>【永慶房屋品牌形象廣告設計獎】</p>平面組- 入圍決賽</p><p>美術設計項- 入圍決賽</p>
+                        <p>永慶房屋品牌形象廣告設計獎</p>平面組 - 入圍決賽</p><p>美術設計項 - 入圍決賽</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2024</div>
                         <h3>第33屆時報金犢獎國際競賽</h3>
-                        <p>【森田藥粧】</p>產品短影片設計獎- 入圍決賽</p>
+                        <p>森田藥粧</p>產品短影片設計獎 - 入圍決賽</p>
                     </div>
                 </div>   
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-date">2024</div>
                         <h3>第32屆時報金犢獎國際競賽</h3>
-                        <p>【永和豆漿】</p>新品品牌形象廣告設計獎- 入圍決賽</p>
+                        <p>永和豆漿</p>新品品牌形象廣告設計獎 - 入圍決賽</p>
                     </div>
                 </div>             
                 <div class="timeline-item">
@@ -1460,9 +1477,19 @@
             });
         });
 
-        // 返回作品集分類按鈕顯示邏輯
+        // 返回作品集分類按鈕顯示與點擊邏輯 (修改 1)
         const backToPortfolioBtn = document.getElementById('backToPortfolioBtn');
         const portfolioSection = document.getElementById('portfolio');
+
+        // 新增：監聽點擊，平滑滾動回頂部
+        if (backToPortfolioBtn && portfolioSection) {
+            backToPortfolioBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: portfolioSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        }
 
         window.addEventListener('scroll', () => {
             if (!portfolioSection || !backToPortfolioBtn) return;
